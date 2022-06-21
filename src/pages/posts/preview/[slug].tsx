@@ -16,13 +16,13 @@ interface PostPreviewProps {
   }
 }
 export default function PostPreview({ post }: PostPreviewProps) {
-  const [session] = useSession();
+  const {data} = useSession();
   const router = useRouter();
   useEffect(()=>{
-    if (session?.activeSubscription){
+    if (data?.activeSubscription){
       router.push(`/posts/${post.slug}`);
     }
-  },[session]);
+  },[data]);
   return <>
     <Head>
       <title>{post.title} | Ignews</title>
